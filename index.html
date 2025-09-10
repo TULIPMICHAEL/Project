@@ -35,12 +35,18 @@ header {
 
 /* Hamburger */
 .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 25px; height: 20px; cursor: pointer; transition: all 0.3s ease; z-index: 1100; }
-.hamburger span { display: block; height: 3px; width: 100%; background: #333; border-radius: 2px; transition: all 0.3s ease; }
+.hamburger span { display: block; height: 3px; width: 25px; background: #333; border-radius: 2px; transition: all 0.3s ease; }
 
-/* Hamburger X animation (symmetrical) */
-.hamburger.open span:nth-child(1) { transform: rotate(45deg); transform-origin: center; }
+/* Hamburger X animation with extended right ends */
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(2px, 0);
+  transform-origin: center;
+}
 .hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: rotate(-45deg); transform-origin: center; }
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(2px, 0);
+  transform-origin: center;
+}
 
 /* Nav Center */
 .nav-center { text-align:center; }
@@ -107,7 +113,7 @@ main h1 { font-family:'Inter',sans-serif; font-weight:600; font-size:2.8rem; mar
     font-size:18px;
     padding:8px 14px;
     background: transparent;
-    border:2px solid #333; /* visible black border */
+    border:2px solid #333;
     color: #333;
     margin-bottom: 6px;
     border-radius: 8px;
