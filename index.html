@@ -34,8 +34,13 @@ header {
 .nav-left .nav-links a:hover { background:#333; color:#fff; cursor:pointer; }
 
 /* Hamburger */
-.hamburger { display: none; flex-direction: column; justify-content: space-between; width: 25px; height: 20px; cursor: pointer; }
-.hamburger span { display: block; height: 3px; width: 100%; background: #333; border-radius: 2px; }
+.hamburger { display: none; flex-direction: column; justify-content: space-between; width: 25px; height: 20px; cursor: pointer; transition: all 0.3s ease; z-index: 1100; }
+.hamburger span { display: block; height: 3px; width: 100%; background: #333; border-radius: 2px; transition: all 0.3s ease; }
+
+/* Hamburger X animation */
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
 
 /* Nav Center */
 .nav-center { text-align:center; }
@@ -80,33 +85,32 @@ main h1 { font-family:'Inter',sans-serif; font-weight:600; font-size:2.8rem; mar
 
 .close-btn { position:absolute; right:10px; top:8px; font-size:20px; color:#fff; cursor:pointer; opacity:0.9; }
 
-/* Responsive */
+/* Mobile styles */
 @media (max-width:420px) {
   .hamburger { display:flex; }
-  
+
   .nav-left .nav-links {
     flex-direction: column;
     position: absolute;
     top: 50px;
     left: 0;
     width: 100%;
-    background: transparent; /* transparent buttons */
+    background: transparent;
     overflow: hidden;
-    max-height: 0; /* hidden initially */
+    max-height: 0;
     transition: max-height 0.3s ease;
   }
 
-  .nav-left .nav-links.open {
-    max-height: 500px; /* enough to show buttons */
-  }
+  .nav-left .nav-links.open { max-height: 500px; }
 
   .nav-left .nav-links a {
-    font-size:18px; /* same as desktop */
+    font-size:18px;
     padding:8px 14px;
     background: transparent;
-    border: none;
+    border:2px solid #333; /* visible outline */
     color: #333;
-    margin-bottom: 6px; /* small vertical gap */
+    margin-bottom: 6px;
+    border-radius: 8px;
   }
 
   .nav-left .nav-links a:last-child { margin-bottom: 0; }
@@ -205,8 +209,10 @@ document.getElementById('forgot').addEventListener('click', e => { e.preventDefa
 // Hamburger toggle
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
+
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('open');
+  hamburger.classList.toggle('open'); // animate into X
 });
 </script>
 
