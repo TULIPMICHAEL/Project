@@ -23,11 +23,49 @@
       background:#fff;
       border-bottom:1.5px solid rgba(0,0,0,0.15);
     }
-    .nav-left { display:flex; gap:15px; justify-content:flex-start; flex-wrap: wrap; }
-    .nav-left a { text-decoration:none; color:#333; font-size:18px; font-weight:500; padding:8px 14px; border:2px solid #333; border-radius:8px; background:#fff; }
-    .nav-left a:hover { background:#333; color:#fff; cursor:pointer; }
+
+    /* Nav Left */
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .nav-left .nav-links a {
+      text-decoration:none;
+      color:#333;
+      font-size:18px;
+      font-weight:500;
+      padding:8px 14px;
+      border:2px solid #333;
+      border-radius:8px;
+      background:#fff;
+    }
+    .nav-left .nav-links a:hover { background:#333; color:#fff; cursor:pointer; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 25px;
+      height: 20px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: #333;
+      border-radius: 2px;
+    }
+
+    /* Nav Center */
     .nav-center { text-align:center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     #title { text-decoration:none; color:#333; font-weight:bold; font-size:24px; user-select:none; }
+
+    /* Nav Right */
     .nav-right { text-align:right; }
     .nav-right a { text-decoration:none; color:#333; font-weight:600; font-size:18px; cursor:pointer; }
     .nav-right a:hover { text-decoration:underline; }
@@ -109,20 +147,29 @@
 
     @media (max-width:420px) {
       header { grid-template-columns: 1fr auto 1fr; gap:5px; }
-      .nav-left { flex-direction: column; gap:6px; }
-      .nav-left a, .nav-right a { font-size:14px; padding:5px 8px; }
+      .nav-left .nav-links { display: none; flex-direction: column; position: absolute; top:50px; left:0; background:#fff; width:100%; padding:10px 0; border-bottom: 1px solid rgba(0,0,0,0.15); }
+      .hamburger { display: flex; }
+      .nav-left { position: relative; }
+      .nav-left .nav-links a { font-size:16px; padding:10px; margin-left:0; border:none; border-radius:0; }
+      .nav-right a { font-size:20px; padding:10px 16px; }
       main h1 { font-size:1.6rem; }
       .slideshow-container { height:200px; }
       .login-box { width:90%; padding:20px; }
     }
-
   </style>
 </head>
 <body>
   <header>
     <div class="nav-left">
-      <a href="history.html">History</a>
-      <a href="support.html">Support</a>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="history.html">History</a>
+        <a href="support.html">Support</a>
+      </div>
     </div>
     <div class="nav-center"><a id="title" href="index.html">NippuKoodi</a></div>
     <div class="nav-right"><a id="loginLink">Login</a></div>
@@ -163,6 +210,7 @@
   </div>
 
   <script>
+    // Slideshow
     let slideIndex = 0;
     function showSlides() {
       const slides = document.getElementsByClassName('slide');
@@ -174,6 +222,7 @@
     }
     showSlides();
 
+    // Login modal
     const loginLink = document.getElementById('loginLink');
     const modal = document.getElementById('loginModal');
     const closeModal = document.getElementById('closeModal');
@@ -196,6 +245,17 @@
     loginForm.addEventListener('submit', (e) => { e.preventDefault(); alert('Demo login submitted'); closeTheModal(); });
     document.getElementById('registerLink').addEventListener('click', (e) => { e.preventDefault(); alert('Register clicked'); });
     document.getElementById('forgot').addEventListener('click', (e) => { e.preventDefault(); alert('Forgot password clicked'); });
+
+    // Hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      if(navLinks.style.display === 'flex') {
+        navLinks.style.display = 'none';
+      } else {
+        navLinks.style.display = 'flex';
+      }
+    });
   </script>
 </body>
 </html>
