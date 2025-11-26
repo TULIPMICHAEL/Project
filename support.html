@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NippuKoodi - Support</title>
+  <title>NippuKoodi - Contacts</title>
   <style>
     html, body {
       margin: 0; padding: 0; height: 200vh;
@@ -52,14 +52,43 @@
     nav a:hover {
       background-color: #333;
       color: #fff;
-      cursor: pointer;
     }
     body > main {
       padding-top: 70px;
-      max-width: 700px;
+      max-width: 900px;
       margin: 0 auto;
       padding-left: 20px;
       padding-right: 20px;
+    }
+
+    .contact-card {
+      display: flex;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      align-items: center;
+    }
+    .contact-card img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: #ddd;
+    }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      font-size: 16px;
+    }
+    .contact-info .name {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .contact-info a {
+      color: #d98b00;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -67,14 +96,45 @@
   <header>
     <a href="index.html" id="title">NippuKoodi</a>
     <nav>
-      <a href="history.html">History</a>
-      <a href="support.html">Support</a>
+      <a href="history.html">About</a>
+      <a href="support.html">Contacts</a>
     </nav>
   </header>
 
   <main>
     <h1>Support</h1>
-    <p>This is the Support page content.</p>
+    
+    <div class="contact-card">
+      <img src="/mnt/data/891715ed-ba39-4d2f-937c-ce3d8e397741.png" alt="Contact 1" />
+      <div class="contact-info">
+        <div class="name">Jere Pessala</div>
+        <div>Toimitusjohtaja</div>
+        <a href="mailto:jere.pessala@nonnagroup.fi">jere.pessala@nonnagroup.fi</a>
+        <div>040 538 3834</div>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <img src="/mnt/data/891715ed-ba39-4d2f-937c-ce3d8e397741.png" alt="Contact 2" />
+      <div class="contact-info">
+        <div class="name">Henrik Passi</div>
+        <div>Talousjohtaja</div>
+        <a href="mailto:henrik.passi@nonnagroup.fi">henrik.passi@nonnagroup.fi</a>
+        <div>050 597 3364</div>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <img src="/mnt/data/891715ed-ba39-4d2f-937c-ce3d8e397741.png" alt="Contact 3" />
+      <div class="contact-info">
+        <div class="name">Katri Kaltto</div>
+        <div>Hallinnon asiantuntija</div>
+        <a href="mailto:katri.kaltto@nonnagroup.fi">katri.kaltto@nonnagroup.fi</a>
+        <div>050 550 8661</div>
+      </div>
+    </div>
+
   </main>
 </body>
 </html>
+
