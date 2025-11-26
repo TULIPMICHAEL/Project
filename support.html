@@ -4,61 +4,104 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NippuKoodi - Contacts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous"/>
   <style>
     html, body {
-      margin: 0; padding: 0; height: 200vh;
+      margin:0;
+      padding:0;
+      height:200vh;
       font-family: Arial, sans-serif;
       background: linear-gradient(to bottom, #5a9bd8 0%, #b4d2eb 100%);
-      color: #333;
+      color:#333;
     }
+
+    /* Header */
     header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 50px;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 20px;
-      box-sizing: border-box;
-      z-index: 1000;
-      border-bottom: 1.5px solid rgba(0, 0, 0, 0.15);
+      top:0; left:0; right:0;
+      height:70px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0 40px;
+      box-sizing:border-box;
+      z-index:1000;
+      background:#fff;
+      border-bottom:1.5px solid rgba(0,0,0,0.15);
     }
+
+    /* Title */
     #title {
-      font-weight: bold;
-      font-size: 24px;
-      user-select: none;
-      text-decoration: none;
-      color: #333;
+      text-decoration:none;
+      color:#333;
+      font-weight:bold;
+      font-size:32px;
+      user-select:none;
+      font-family:"Georgia","Times New Roman",serif;
     }
-    nav {
-      display: flex;
-      gap: 15px;
+
+    /* Nav Right */
+    .nav-left {
+      display:flex;
+      align-items:center;
+      gap:15px;
+      position:relative;
     }
-    nav a {
-      text-decoration: none;
-      color: #333;
-      font-size: 18px;
-      font-weight: 500;
-      padding: 8px 14px;
-      border: 2px solid #333;
-      border-radius: 8px;
-      background: white;
-      transition: background-color 0.3s, color 0.3s;
-      user-select: none;
+
+    .nav-left .nav-links {
+      display:flex;
+      gap:30px;
     }
-    nav a:hover {
-      background-color: #333;
-      color: #fff;
+
+    .nav-left .nav-links a {
+      text-decoration:none;
+      color:#333;
+      font-size:18px;
+      font-weight:500;
+      padding:0;
+      border:none;
+      border-radius:0;
+      background:transparent;
     }
+
+    .nav-left .nav-links a:hover {
+      color:#000;
+      text-decoration:underline;
+      cursor:pointer;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display:none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 25px;
+      height: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1100;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: #333;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
     body > main {
-      padding-top: 70px;
+      padding-top:90px; /* leave space for header */
       max-width: 900px;
-      margin: 0 auto;
-      padding-left: 20px;
-      padding-right: 20px;
+      margin:0 auto;
+      padding-left:20px;
+      padding-right:20px;
     }
 
     .contact-card {
@@ -108,50 +151,100 @@
     .contact-info a:hover::after {
       width: 100%;
     }
+
+    /* Mobile styles */
+    @media (max-width:420px) {
+      header { padding:0 16px; }
+      #title { font-size:24px; }
+
+      .hamburger { display:flex; }
+
+      .nav-left .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease;
+        padding: 8px 16px;
+        box-sizing:border-box;
+        align-items:flex-end;
+      }
+
+      .nav-left .nav-links.open { max-height: 200px; }
+
+      .nav-left .nav-links a { font-size:18px; padding:4px 0; margin-bottom:4px; }
+      .nav-left .nav-links a:last-child { margin-bottom:0; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <a href="index.html" id="title">NippuKoodi</a>
-    <nav>
+<header>
+  <!-- Title on the left -->
+  <a id="title" href="index.html">NippuKoodi</a>
+
+  <!-- Nav + hamburger on the right -->
+  <div class="nav-left">
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-links" id="navLinks">
       <a href="history.html">About</a>
       <a href="support.html">Contacts</a>
-    </nav>
-  </header>
-
-  <main>
-    <h1>Contacts</h1>
-    
-    <div class="contact-card">
-      <img src="pfp1.jpg" alt="Contact 1" />
-      <div class="contact-info">
-        <div class="name">matti matti</div>
-        <div>Toimitusjohtaja</div>
-        <a href="mailto:matti.meikalainen@gmail.com">matti.meikalainen@gmail.com</a>
-        <div><a href="tel:1234567890">123 456 7890</a></div>
-      </div>
     </div>
+  </div>
+</header>
 
-    <div class="contact-card">
-      <img src="pfp2.jpg" alt="Contact 2" />
-      <div class="contact-info">
-        <div class="name">matti matti</div>
-        <div>Toimitusjohtaja</div>
-        <a href="mailto:matti.meikalainen@gmail.com">matti.meikalainen@gmail.com</a>
-        <div><a href="tel:1234567890">123 456 7890</a></div>
-      </div>
+<main>
+  <h1>Contacts</h1>
+
+  <div class="contact-card">
+    <img src="pfp1.jpg" alt="Contact 1" />
+    <div class="contact-info">
+      <div class="name">matti matti</div>
+      <div>Toimitusjohtaja</div>
+      <a href="mailto:matti.meikalainen@gmail.com">matti.meikalainen@gmail.com</a>
+      <div><a href="tel:1234567890">123 456 7890</a></div>
     </div>
+  </div>
 
-    <div class="contact-card">
-      <img src="pfp3.jpg" alt="Contact 3" />
-      <div class="contact-info">
-        <div class="name">unknown</div>
-        <div>Toimitusjohtaja</div>
-        <a href="mailto:unknown@gmail.com">unknown@gmail.com</a>
-        <div><a href="tel:1234567890">123 456 7890</a></div>
-      </div>
+  <div class="contact-card">
+    <img src="pfp2.jpg" alt="Contact 2" />
+    <div class="contact-info">
+      <div class="name">matti matti</div>
+      <div>Toimitusjohtaja</div>
+      <a href="mailto:matti.meikalainen@gmail.com">matti.meikalainen@gmail.com</a>
+      <div><a href="tel:1234567890">123 456 7890</a></div>
     </div>
+  </div>
 
-  </main>
+  <div class="contact-card">
+    <img src="pfp3.jpg" alt="Contact 3" />
+    <div class="contact-info">
+      <div class="name">unknown</div>
+      <div>Toimitusjohtaja</div>
+      <a href="mailto:unknown@gmail.com">unknown@gmail.com</a>
+      <div><a href="tel:1234567890">123 456 7890</a></div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  // Hamburger toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open');
+  });
+</script>
 </body>
 </html>
