@@ -1,234 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>NippuKoodi</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NippuKoodi – Connecting Skilled Workers</title>
+
   <style>
-    html, body {
-      margin:0;
-      padding:0;
-      height:200vh;
-      font-family: Arial, sans-serif;
-      background:#fff;
-      color:#333;
+    :root {
+      --primary-color: #0077cc;
+      --primary-hover: #005fa3;
+      --bg-light: #f6f8fb;
+      --text-dark: #222;
+      --text-muted: #666;
+      --header-height: 64px;
     }
 
-    /* Header */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    body {
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--primary-color);
+    }
+
+    /* ===== HEADER ===== */
     header {
-      position: fixed;
-      top:0; left:0; right:0;
-      height:70px; /* a bit taller, like the example */
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:0 40px;
-      box-sizing:border-box;
-      z-index:1000;
-      background:#fff;
-      border-bottom:1.5px solid rgba(0,0,0,0.15);
-    }
-
-    /* Title (left) */
-    #title {
-      text-decoration:none;
-      color:#333;
-      font-weight:bold;
-      font-size:32px;
-      user-select:none;
-      font-family:"Georgia","Times New Roman",serif;
-    }
-
-    /* Nav Right (desktop) */
-    .nav-left {
-      display:flex;
-      align-items:center;
-      gap:15px;
-      position:relative;
-    }
-
-    .nav-left .nav-links {
-      display:flex;
-      gap:30px;
-    }
-
-    .nav-left .nav-links a {
-      text-decoration:none;
-      color:#333;
-      font-size:18px;
-      font-weight:500;
-      padding:0;              /* no pill buttons */
-      border:none;
-      border-radius:0;
-      background:transparent;
-    }
-
-    .nav-left .nav-links a:hover {
-      background:transparent;
-      color:#000;
-      text-decoration:underline;
-      cursor:pointer;
-    }
-
-    /* Hamburger */
-    .hamburger {
-      display:none;
-      flex-direction: column;
+      height: var(--header-height);
+      background: #fff;
+      border-bottom: 1px solid #e6e9ee;
+      display: flex;
+      align-items: center;
       justify-content: space-between;
-      width: 25px;
-      height: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      z-index: 1100;
-    }
-
-    .hamburger span {
-      display: block;
-      height: 3px;
+      padding: 0 28px;
+      position: fixed;
       width: 100%;
-      background: #333;
-      border-radius: 2px;
-      transition: all 0.3s ease;
+      top: 0;
+      z-index: 100;
     }
 
-    /* Hamburger X animation */
-    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+    header h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
 
-    /* Slideshow */
+    nav a {
+      margin-left: 22px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+    }
+
+    /* ===== HERO ===== */
     .slideshow-container {
-      position:relative;
-      margin-top:70px; /* match header height */
-      max-width:100%;
-      height:400px;
-      overflow:hidden;
-    }
-    .slide { display:none; width:100%; height:100%; }
-    .slide img {
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      border-bottom:3px solid rgba(0,0,0,0.2);
-    }
-    .fade { animation: fadeEffect 1s; }
-    @keyframes fadeEffect { from { opacity:0.4 } to { opacity:1 } }
-
-    main {
-      padding-top:20px;
-      max-width:700px;
-      margin:0 auto;
-      padding-left:20px;
-      padding-right:20px;
-    }
-    main h1 {
-      font-family:'Inter',sans-serif;
-      font-weight:600;
-      font-size:2.8rem;
-      margin-bottom:0.5rem;
-      color:#222;
+      margin-top: var(--header-height);
+      height: 420px;
+      background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url("slide1.jpg") center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* Mobile styles */
-    @media (max-width:420px) {
-      header {
-        padding:0 16px;
+    .hero-text {
+      max-width: 720px;
+      text-align: center;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .hero-text h2 {
+      font-size: 3rem;
+      margin-bottom: 14px;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      opacity: 0.95;
+    }
+
+    .primary-btn {
+      display: inline-block;
+      margin-top: 22px;
+      padding: 14px 36px;
+      background: var(--primary-color);
+      color: #fff;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background 0.25s ease, transform 0.2s ease;
+    }
+
+    .primary-btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    section:not(:first-of-type) {
+      border-top: 1px solid #e6e9ee;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 14px;
+      font-size: 2rem;
+    }
+
+    section p.section-desc {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 40px;
+      color: var(--text-muted);
+    }
+
+    /* ===== SERVICES ===== */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 26px;
+    }
+
+    .feature-card {
+      background: #fff;
+      padding: 28px 24px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+    }
+
+    .feature-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #fff;
+      border-top: 1px solid #e6e9ee;
+      text-align: center;
+      padding: 26px 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero-text h2 {
+        font-size: 2.3rem;
       }
 
-      #title {
-        font-size:24px;
+      nav a {
+        margin-left: 14px;
       }
-
-      .hamburger {
-        display:flex;
-      }
-
-      .nav-left .nav-links {
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        left: 0;
-        width: 100%;
-        background: #fff;
-        overflow: hidden;
-        max-height: 0;
-        transition: max-height 0.3s ease;
-        padding: 8px 16px;
-        box-sizing:border-box;
-        align-items:flex-end;
-      }
-
-      .nav-left .nav-links.open {
-        max-height: 200px;
-      }
-
-      .nav-left .nav-links a {
-        font-size:18px;
-        padding:4px 0;
-        margin-bottom: 4px;
-        border:none;
-      }
-
-      .nav-left .nav-links a:last-child { margin-bottom: 0; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <!-- Title on the left -->
-  <a id="title" href="index.html">NippuKoodi</a>
+  <!-- HEADER -->
+  <header>
+    <h1>NippuKoodi</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-  <!-- Nav + hamburger on the right -->
-  <div class="nav-left">
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="nav-links" id="navLinks">
-      <a href="history.html">About</a>
-      <a href="support.html">Contacts</a>
+  <!-- HERO -->
+  <div class="slideshow-container">
+    <div class="hero-text">
+      <h2>Connecting Skilled Workers</h2>
+      <p>Reliable, vetted, and ready for trusted companies</p>
+      <a href="#contact" class="primary-btn">Get Started</a>
     </div>
   </div>
-</header>
 
-<div class="slideshow-container">
-  <div class="slide fade"><img src="slide1.jpg" alt="Tech Image 1"/></div>
-  <div class="slide fade"><img src="slide2.jpg" alt="Tech Image 2"/></div>
-  <div class="slide fade"><img src="slide3.jpg" alt="Tech Image 3"/></div>
-</div>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About NippuKoodi</h2>
+    <p class="section-desc">
+      NippuKoodi connects skilled workers with trusted companies efficiently and safely.
+      Every worker is carefully vetted and prepared for immediate placement.
+    </p>
+  </section>
 
-<main>
-  <h1>Welcome to NippuKoodi</h1>
-  <p>Scroll down to explore the content.</p>
-</main>
+  <!-- SERVICES -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <p class="section-desc">
+      A streamlined hiring process built on trust, speed, and reliability.
+    </p>
 
-<script>
-  // Slideshow
-  let slideIndex = 0;
-  function showSlides() {
-    const slides = document.getElementsByClassName('slide');
-    for (let i = 0; i < slides.length; i++) slides[i].style.display = 'none';
-    slideIndex++;
-    if (slideIndex > slides.length) slideIndex = 1;
-    if (slides[slideIndex - 1]) slides[slideIndex - 1].style.display = 'block';
-    setTimeout(showSlides, 4000);
-  }
-  showSlides();
+    <div class="features">
+      <div class="feature-card">
+        <h3>Vetted Workers</h3>
+        <p>Every worker undergoes thorough background checks and verification.</p>
+      </div>
 
-  // Hamburger toggle
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
+      <div class="feature-card">
+        <h3>Trusted Companies</h3>
+        <p>We partner only with reliable organizations to ensure smooth placements.</p>
+      </div>
 
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    hamburger.classList.toggle('open');
-  });
-</script>
+      <div class="feature-card">
+        <h3>Quick Placement</h3>
+        <p>Workers are placed on-site quickly without unnecessary hiring delays.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Ongoing Support</h3>
+        <p>Continuous support for both workers and companies throughout engagement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Get in Touch</h2>
+    <p class="section-desc">
+      Ready to work together? Reach out and get started today.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 NippuKoodi. All rights reserved.
+  </footer>
 
 </body>
 </html>
